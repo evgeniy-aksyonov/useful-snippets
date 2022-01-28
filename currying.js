@@ -1,9 +1,23 @@
-const sum = (a,b,c) => a + b + c;
+function curry(func) {
 
-console.log(sum(1,2,3));
+  return function curried(...args) {
+    if (args.length >= func.length) {
+      return func.apply(this, args);
+    } else {
+      return function(...args2) {
+        return curried.apply(this, args.concat(args2));
+      }
+    }
+  };
 
-const curry = (fn) => a => b => c => fn(a, b, c);
+}
 
-const curriedSum = curry(sum);
+function sum(a, b, c) {
+  return a + b + c;
+}
 
-console.log(curriedSum(1)(2)(3));
+let curriedSum = curry(sum);
+
+alert( curriedSum(1, 2, 3) ); // 6, still callable normally
+alert( curriedSum(1)(2,3) ); // 6, currying of 1st arg
+alert( curriedSum(1)(2)(3) ); // 6, full currying
