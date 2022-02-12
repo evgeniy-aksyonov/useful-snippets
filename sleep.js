@@ -4,6 +4,9 @@ function sleep(milliseconds) {
   return new Promise(resolve => setTimeout(resolve, milliseconds));
 }
 
+// or arrow func oneliner:
+// const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 // Usage:
 
 console.log('Hello');

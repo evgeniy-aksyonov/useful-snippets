@@ -1,57 +1,34 @@
-/**
- *
-  reduce() exectues a provided *reducer* function on each element of
-  the array returning a final single output value.
-  reduce() has two parameters:
-  - the reducer callback function
-  - an initial value. If no initial value is supplied, the value
-    of the first element in the array is used, and the initial
-    iteration is skipped.
-    (which will be the initial value of the accumulator)
-  The reducer function takes four arguments:
-  - the accumulator
-  - the value of the current element
-  - the index of the current element
-  - the Array object being traversed
-  The return value of the reducer will be the new accumulator argument
-  in the next iteration, and ultimately the final, single resulting value.
-  Calling reduce on an empty array without an initial value will trow a TypeError
-*/
-
-Array.prototype.myReduce = function myReduce(reducer, initialValue) {
-  let accumulator = initialValue;
+Array.prototype.myReduce = function (fn, accum) {
   let i = 0;
 
-  // initival value check
-  if (typeof initialValue === 'undefined') {
-    if (this.length === 0) {
-      // no reduce on empty array without and initial value
-      throw new TypeError('reduce on empty array without initial value');
-    }
-
-    // no initial value, so accumulator is set to first element,
-    // and first iteration is skipped
-    [accumulator] = this;
+  // if no accum provided --> skip first iteration and set accum to the forst elem of array
+  if(arguments.length < 2) {
     i = 1;
+    accum = this[0];
   }
 
-  for (; i < this.length; i += 1) {
-    accumulator = reducer(accumulator, this[i], i, this);
+  // run provided fn through all array elements and update accum value between loop calls
+  for (; i < this.length; i++) {
+    accum = fn(accum, this[i], i, this);
   }
 
-  return accumulator;
+  return accum;
 };
 
-const arr = [10, 20 , 30];
+const users = [
+  {id: 1, name: 'Jared'},
+  {id: 2, name: 'Leo'},
+  {id: 3, name: 'Hell'},
+  {id: 4, name: 'Mia'}
+];
 
-const res = arr.myReduce((accumulator, currentValue) => {
-  if (currentValue > 10) {
-    accumulator.high += currentValue;
-  } else {
-    accumulator.low += currentValue;
+const threeLetterNames = users.myReduce((accum, current) => {
+  if(current.name.length === 3) {
+    accum.push(current)
   }
 
-  return accumulator;
-}, {low: 0, high: 0});
+  return accum;
+}, []);
 
-console.log('res: ', res); // res: {low: 10, high: 50}
+console.log('threeLetterNames: ', threeLetterNames);
+
