@@ -1,3 +1,4 @@
+// given arrays contain only unique items
 const array1 = [1,5,7,8,9],
       array2 = [2,5,6,8,10];
 
