@@ -8,9 +8,9 @@ function greet(text) {
 }
 
 const user = {
-  name: 'John'
+  name: 'John Lakeman'
 };
 
 const boundGreeting = greet.myBind(user, 'Hey there');
 
-boundGreeting();
+boundGreeting(); // Hey there, John Lakeman
