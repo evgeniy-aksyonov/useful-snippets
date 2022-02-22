@@ -1,7 +1,7 @@
 Array.prototype.myReduce = function (fn, accum) {
   let i = 0;
 
-  // if no accum provided --> skip first iteration and set accum to the forst elem of array
+  // if no accum provided --> skip first iteration and set accum to the first elem of array
   if(arguments.length < 2) {
     i = 1;
     accum = this[0];
