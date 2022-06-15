@@ -11,7 +11,7 @@ function deepClone(originalObject) {
     return originalObject; // null
   }
 
-  let result = (originalObject instanceof Array) ? []: {};
+  let result = (originalObject instanceof Array) ? [] : {};
 
   for (const prop in originalObject) {
     if (originalObject.hasOwnProperty(prop)) {
