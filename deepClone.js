@@ -15,7 +15,7 @@ function deepClone(originalObject) {
 
   for (const prop in originalObject) {
     if (originalObject.hasOwnProperty(prop)) {
-      result[prop] = deepClone(originalObject[prop])
+      result[prop] = deepClone(originalObject[prop]) // recursive deepClone call with the value of prop(for nested objects. Primitives will be returned as is(first check is exactly for that))
     }
   }
 
