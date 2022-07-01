@@ -26,8 +26,19 @@ function Teacher(name, age, gender, subject) {
   this.subject = subject;
 }
 
+
+// After this 'teacher instance of Person' will return true, BUT:
 Teacher.prototype = Object.create(Person.prototype);
+// teacher.constructor will return 'Person', which is wrong.
+// The reason of that is that line: 'Teacher.prototype = Object.create(Person.prototype)',
+// where we essentially reset Teacher.prototype.
+// And it no longer have it's own constructor because it delegates to Person.prototype
+
+// It should point to Teacher instead.
+// That's why we need to set it's constructor explicitly:
 Teacher.prototype.constructor = Teacher;
+//  Great explanation: https://www.youtube.com/watch?v=MiKdRJc4ooE
+
 
 Teacher.prototype.getSubject = function() {
   return this.subject;
