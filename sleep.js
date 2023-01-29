@@ -1,7 +1,7 @@
 // sleep/delay function
 
-function sleep(milliseconds) {
-  return new Promise(resolve => setTimeout(resolve, milliseconds));
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 // or arrow func oneliner:
@@ -22,9 +22,7 @@ sleep(2000)
 
 // OR with async await
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+
 
 async function delayedGreeting() {
   console.log("Hello");

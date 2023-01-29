@@ -6,8 +6,8 @@ Function.prototype.defer = Function.prototype.defer || function(ms) {
 };
 
 // check it
-function f(a, b) {
-  alert( a + b );
+function sum(a, b) {
+  console.log( a + b );
 }
 
-f.defer(1000)(1, 2); // выведет 3 через 1 секунду.
+sum.defer(1000)(1, 2); // выведет 3 через 1 секунду.
