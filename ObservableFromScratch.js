@@ -93,9 +93,9 @@ fakeAsyncData$
 // from array
 let array$ = Observable.fromArray([1,2,3]);
 array$.subscribe({
- next(val) { console.log(val) } ,
- error(e) { console.log(e) } ,
- complete() { console.log('complete') }
+  next(val) { console.log(val) } ,
+  error(e) { console.log(e) } ,
+  complete() { console.log('complete') }
 });
 
 
