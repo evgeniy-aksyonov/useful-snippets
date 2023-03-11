@@ -1,21 +1,18 @@
-const orig = {a: {b: {c: 1}}, d: 10};
+const orig = { a: { b: { c: 1 } }, d: 10 };
 
-function deepClone(originalObject) {
-  // equality check is not strict because typeof(null) == «object» too
-  if (typeof(originalObject) != 'object') {
-    return originalObject;
+function deepCopy(obj) {
+  if (typeof obj !== 'object' || obj === null) {
+    // If the object is not an object or is null, return it directly
+    return obj;
   }
 
-  // null
-  if (!originalObject) {
-    return originalObject; // null
-  }
+  // Create a new object or array to store the copied properties
+  const result = Array.isArray(obj) ? [] : {};
 
-  let result = (originalObject instanceof Array) ? [] : {};
-
-  for (const prop in originalObject) {
+  // Recursively copy each property of the object
+  for (let key in obj) {
     if (originalObject.hasOwnProperty(prop)) {
-      result[prop] = deepClone(originalObject[prop]) // recursive deepClone call with the value of prop(for nested objects. Primitives will be returned as is(first check is exactly for that))
+      result[key] = deepCopy(obj[key]);
     }
   }
 
