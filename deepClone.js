@@ -19,6 +19,8 @@ function deepCopy(obj) {
   return result;
 }
 
+// Note that this method also has limitations, such as not being able to copy functions or objects with circular references.
+
 /* 
 Что здесь происходит:
 1. Если объект — простой (строка, число, boolean), просто возвращаем его, 
