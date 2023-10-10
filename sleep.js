@@ -1,4 +1,4 @@
-// sleep/delay function
+// sleep/delay funct
 
 // function sleep(ms) {
 //   return new Promise(resolve => setTimeout(resolve, ms));
