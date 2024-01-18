@@ -2,13 +2,13 @@ function logPerson() {
   console.log(`Person: ${this.name}, ${this.age}, ${this.job}`);
 }
 
-const person1 = {name: 'Misha', age: 22, job: 'Frontend'};
-const person2 = {name: 'Elena', age: 19, job: 'SMM'};
+const person1 = { name: 'Michael', age: 22, job: 'Frontend' };
+const person2 = { name: 'Elena', age: 19, job: 'SMM' };
 
-function myBind(context, func) {
-  return function(...args) {
-    func.apply(context, args);
-  }
+function myBind(contextObj, func) {
+  return function (...args) {
+    func.apply(contextObj, args);
+  };
 }
 
 myBind(person1, logPerson)();
