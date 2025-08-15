@@ -1,3 +1,7 @@
+// New Built-in NATIVE structuredClone() method
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone
+// It’s been available across browsers since March 2022
+
 const orig = { a: { b: { c: 1 } }, d: 10 };
 
 function deepCopy(obj) {

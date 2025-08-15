@@ -1,16 +1,15 @@
 // Write function "once" which should work only after first call, and then do nothing
 
 function once(someFunc) {
-  let notCalled = true;
+  let wasCalled = false;
 
   return function (...args) {
-    if(notCalled) {
-      notCalled = false;
+    if (!wasCalled) {
+      wasCalled = true;
       return someFunc.apply(this, args);
     }
-  }
+  };
 }
-
 
 function sum(x, y) {
   return x + y;
